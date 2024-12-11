@@ -18,7 +18,7 @@ import iconv from "iconv-lite";
 //
 
 let porfolioID = "1";
-
+let ticker = "BTLG11";
 // 1. Open the database and get the whole json list of fiis
 
 // 2. Loop through all of them
@@ -30,8 +30,8 @@ let porfolioID = "1";
 
 const scrapeData = async () => {
   try {
-    const url = "https://www.fundamentus.com.br/detalhes.php?papel=BTLG11";
-
+    const url = `https://www.fundamentus.com.br/detalhes.php?papel=${ticker}`;
+    console.log(url);
     // Fetch the raw response as a buffer
     const { data } = await axios.get(url, {
       headers: {
@@ -62,6 +62,7 @@ const scrapeData = async () => {
       .trim();
 
     // Log the results
+    console.log(`Ticker: ${ticker}`);
     console.log(`Cotação: ${cotacao}`);
     console.log(`P/VP: ${pVp}`);
   } catch (error) {
