@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite dev",
-    "fii-update": "node src/scripts/fiis-update-single.js",
+    "fiis-update-single": "node src/scripts/fiis-update-single.js",
     "fiis-update-table": "node src/scripts/fiis-update-table.js",
+    "fiis-update-dist": "node src/scripts/fiis-update-distributions.js",
     "build": "vite build",
     "preview": "vite preview",
     "test": "npm run test:integration && npm run test:unit",

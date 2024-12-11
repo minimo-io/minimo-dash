@@ -18,7 +18,12 @@ import iconv from "iconv-lite";
 //
 
 let porfolioID = "1";
-let ticker = "BTLG11";
+const ticker = process.argv[2]; // Replace with the desired ticker
+if (!ticker) {
+  console.log("Please provide a ticker");
+  process.exit(1);
+}
+
 // 1. Open the database and get the whole json list of fiis
 
 // 2. Loop through all of them
