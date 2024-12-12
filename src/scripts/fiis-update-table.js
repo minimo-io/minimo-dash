@@ -5,22 +5,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import Database from "better-sqlite3";
 
-const sleepBetweenTickers = 500;
-
-// {
-// 		"ticker": "BTLG11",
-// 		"date": "Apr 23, 2021",
-// 		"sector": "tijolo",
-// 		"subSector": "logistica",
-// 		"pvp": 0.88,
-// 		"dyMo": 0.85, // (dividendo mes / preco da cota) * 100
-// 		"dyAvgHist": 0.725,
-// 		"alloc": 20,
-// 		"price": 90.09,
-// 		"shares": 1,
-// 		"manager": "BTG"
-// 	},
-//
+const sleepBetweenTickers = 200;
 
 // Function to scrape data from the proventos page for a specific ticker
 async function getProvento(ticker) {
