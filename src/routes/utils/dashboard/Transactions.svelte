@@ -165,7 +165,19 @@
               <br />
               Atualizado: {fii.update_date}
             </Tooltip>
-            <span class="text-gray-400"> / {fii.portfolio.shares}</span>
+            <span class="text-gray-400">
+              / {fii.portfolio.shares} de {(
+                ((fii.portfolio.alloc / 100) * 375000) /
+                fii.cotacao
+              ).toFixed(0)}
+            </span>
+            <Tooltip color="yellow" placement="left">
+              Restam {(
+                ((fii.portfolio.alloc / 100) * 375000) / fii.cotacao -
+                fii.portfolio.shares
+              ).toFixed(0)} para chegar
+              <br /> no primeiro objetivo.
+            </Tooltip>
           </TableBodyCell>
           <TableBodyCell class="{rowSize} pr-8 font-normal">
             <img

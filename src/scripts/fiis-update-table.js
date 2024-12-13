@@ -100,6 +100,11 @@ const updateData = db.prepare(`
   WHERE ticker = @ticker;
 `);
 
+const insertFiisDataSeries = db.prepare(`
+  INSERT INTO fiis_data_series (ticker, attribute, value, date_update)
+  VALUES (@ticker, @attribute, @value, datetime('now', 'localtime'));
+`);
+
 // Scrape and process data
 const scrapeData = async () => {
   try {
@@ -176,6 +181,24 @@ const scrapeData = async () => {
           ) || 0,
         dividendo: dividendo, // Add the dividend to the data
       };
+
+      if (data.p_vp !== null) {
+        try {
+          insertFiisDataSeries.run({
+            ticker: data.ticker,
+            attribute: "p_vp",
+            value: data.p_vp,
+          });
+          console.log(
+            `p_vp value inserted into fiis_data_series: ${data.ticker} - p_vp: ${data.p_vp}`,
+          );
+        } catch (error) {
+          console.error(
+            `Failed to insert p_vp into fiis_data_series for ticker ${data.ticker}:`,
+            error.message,
+          );
+        }
+      }
 
       try {
         // First check if the ticker already exists in the database
