@@ -178,6 +178,16 @@
               ).toFixed(0)} para chegar
               <br /> no primeiro objetivo.
             </Tooltip>
+
+            {#if fii.portfolio.shares}
+              <Badge color="red"
+                >{(
+                  (fii.portfolio.shares /
+                    (((fii.portfolio.alloc / 100) * 375000) / fii.cotacao)) *
+                  100
+                ).toFixed(1)}%</Badge
+              >
+            {/if}
           </TableBodyCell>
           <TableBodyCell class="{rowSize} pr-8 font-normal">
             <img
